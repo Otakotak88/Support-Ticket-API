@@ -8,8 +8,13 @@ export const tickets = [
         controller: index
     },
     {
-        method: "POST",
-        path: "/tickets",
-        controller: create
+        method: "GET",
+        path: "/tickets/:id",
+        controller: index
     },
+    {
+        method: "POST",
+        path: "/tickets/",
+        controller: create
+    }
 ]

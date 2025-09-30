@@ -13,7 +13,7 @@ export function create({ request, response, database }){
         updated_at: new Date(),
     }
 
-    database.insert(ticket, "tickets")
+    //database.insert(ticket, "tickets")
 
     return response.writeHead(201).end(JSON.stringify(ticket))
 }
