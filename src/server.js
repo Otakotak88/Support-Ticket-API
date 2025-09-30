@@ -1,5 +1,5 @@
 import http from "node:http"
-import { jsonBodyHandler } from "./middlewares/jsonBodyHandler.js"
+import { jsonBodyHandler } from "./middlewares/JsonBodyHandler.js"
 import { routeHandler } from "./middlewares/routeHandler.js"
 
 async function listener(request, response){
