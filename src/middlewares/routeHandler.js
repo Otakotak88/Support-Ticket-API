@@ -14,10 +14,10 @@ export function routeHandler(request, response){
 
         const { query, ...params } = routeParams.groups
 
+
         request.params = params
 
-        console.log(extractQueryParams(query))
-        //request.query = extractQueryParams(query)
+        request.query = query ? extractQueryParams(query) : {}
 
         return route.controller({ request, response, database })
     }
