@@ -15,7 +15,7 @@ export class Database{
         fs.writeFile(DATABASE_PATH, JSON.stringify(this.#database))
     }
 
-    insert(data, table){
+    insert(table, data){
         if(Array.isArray(this.#database[table])){
             this.#database[table].push(data)
         } else{
@@ -39,4 +39,20 @@ export class Database{
         return data
     }
     
+    update(table, id, data){
+        const index = this.#database[table].findIndex((ticket) => {
+            return ticket.id === id
+        })
+
+        if(index >= 0){
+            this.#database[table][index] = {
+                ...this.#database[table][index],
+                ...data
+            }            
+        }
+
+        this.#persist()
+
+        return this.#database[table][index]
+    }
 }
