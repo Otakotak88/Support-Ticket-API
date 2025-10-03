@@ -49,6 +49,8 @@ export class Database{
                 ...this.#database[table][index],
                 ...data
             }            
+        } else{
+            return `Não foi possível encontrar o produto com id ${id}`
         }
 
         this.#persist()
