@@ -40,13 +40,13 @@ export class Database{
     }
     
     update(table, id, data){
-        const index = this.#database[table].findIndex((ticket) => {
+        const rowIndex = this.#database[table].findIndex((ticket) => {
             return ticket.id === id
         })
 
-        if(index >= 0){
-            this.#database[table][index] = {
-                ...this.#database[table][index],
+        if(rowIndex >= 0){
+            this.#database[table][rowIndex] = {
+                ...this.#database[table][rowIndex],
                 ...data
             }            
         } else{
@@ -55,6 +55,22 @@ export class Database{
 
         this.#persist()
 
-        return this.#database[table][index]
+        return this.#database[table][rowIndex]
+    }
+
+    delete( table, id ){
+        const rowIndex = this.#database[table].findIndex((ticket) => {
+            return ticket.id === id
+        })
+
+        if(rowIndex >= 0){
+            this.#database[table].splice( rowIndex, 1)
+        } else {
+            return `Não foi possível encontrar o produto com id ${id}`
+        }
+
+        this.#persist()
+
+        return null
     }
 }

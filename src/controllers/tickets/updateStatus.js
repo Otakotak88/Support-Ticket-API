@@ -8,5 +8,5 @@ export function updateStatus({ request, response, database }){
         solution 
     })
 
-    response.end(JSON.stringify(updatedTicket))
+    return response.end(JSON.stringify(updatedTicket))
 }
